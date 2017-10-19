@@ -15,11 +15,10 @@ public:
 		ListNode* a, *b;
 		while(l1 && l2) { 
 			if (l1->val == l2->val) {
-				cout<<1<<endl;
-				a->val = l1->val;
 				a = new ListNode(l1->val);
                 b = new ListNode(l1->val);
                 a->next = b;
+                
 				if (!head) {
 					head = a;
 					temp = b;
@@ -29,8 +28,7 @@ public:
 				}
 				l1 = l1->next;
 				l2 = l2->next;
-			} else if (l1->val < l2 -> val) {
-				cout<<2<<endl;
+			} else if (l1->val < l2->val) {
 				a = new ListNode(l1->val); 
 				if (!head) {
 					head = a;
@@ -41,7 +39,6 @@ public:
 				}
 				l1 = l1->next;
 			} else {
-				cout<<3<<endl;
 				a = new ListNode(l2->val);
 				if (head) {
 					temp->next = a;
@@ -55,26 +52,18 @@ public:
 		} 
 		
 		
-		while(l1) {
-            ListNode* a = new ListNode(l1->val);
-            if (!head) {
-                head = temp = a;
-            } else {
-                temp->next = a;
-                temp = a;
-            }
-            l1 = l1->next;
+		if(l1) {
+            if (head)
+                temp->next = l1;
+            else
+                head = l1;
 		}
 		
-		while(l2) {
-            ListNode* a = new ListNode(l2->val);
-            if (!head) {
-                head = temp = a;
-            } else {
-                temp->next = a;
-                temp = a;
-            }
-            l2 = l2->next;
+		if(l2) {
+            if (head)
+			    temp->next = l2;
+            else
+                head = l2;
 		}
 		
 		return head;
